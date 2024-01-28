@@ -3,7 +3,11 @@
 #include <cmath>
 #include <iostream>
 
+#include "Game.h"
+
 int main() {
+    Game myGame;
+    myGame.run();
 
     //Basic Initialization
     sf::RenderWindow window(sf::VideoMode(800, 600), "Idk Something");
