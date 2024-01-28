@@ -14,8 +14,18 @@ void Game::run() {
     float movementVelocity;
     bool isColliding = false;
 
+    sf::Clock clock;
+    float targetFPS = 2000.0f;
+    sf::Time frameTime = sf::seconds(1.0f / targetFPS);
+
     // Game loop
     while (window.isOpen()) {
+        sf::Time elapsed = clock.restart();
+        if (elapsed < frameTime) {
+            sf::sleep(frameTime - elapsed);
+            elapsed = frameTime;
+        }
+
         window.clear();
 
         sf::Event event;
