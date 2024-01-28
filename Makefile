@@ -11,17 +11,23 @@ else
     LIBS = -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32
 endif
 
+SRC_DIR = ./src
+OBJ_DIR = ./out
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
+
 all: compile link run
 
-compile:
-	$(CXX) -c ./src/main.cpp $(CXXFLAGS) -o ./out/main.o
-	$(CXX) -c ./src/engine/functions.cpp $(CXXFLAGS) -o ./out/functions.o
+compile: $(OBJECTS)
 
-link:
-	$(CXX) ./out/main.o ./out/functions.o -o ./out/main $(LDFLAGS) $(LIBS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) -c $< $(CXXFLAGS) -o $@
+
+link: $(OBJECTS)
+	$(CXX) $^ -o $(OBJ_DIR)/main $(LDFLAGS) $(LIBS)
 
 run:
-	./out/main
+	./$(OBJ_DIR)/main
 
 clean:
-	rm -f ./out/main ./out/*.o
+	rm -f $(OBJ_DIR)/main $(OBJ_DIR)/*.o

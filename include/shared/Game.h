@@ -4,5 +4,5 @@ class Game {
     sf::Font font;
 
     public: 
-        int run();
+        void run();
 };

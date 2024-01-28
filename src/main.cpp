@@ -1,13 +1,15 @@
-#include <SFML/Graphics.hpp>
-#include <engine/functions.h>
-#include <cmath>
-#include <iostream>
+// #include <SFML/Graphics.hpp>
+// #include <engine/functions.h>
+// #include <cmath>
+// #include <iostream>
 
 #include "Game.h"
 
 int main() {
     Game myGame;
     myGame.run();
+    return 0;
+    /*
 
     //Basic Initialization
     sf::RenderWindow window(sf::VideoMode(800, 600), "Idk Something");
@@ -82,6 +84,7 @@ int main() {
     }
 
     return 0;
+    */
 }
      
 
