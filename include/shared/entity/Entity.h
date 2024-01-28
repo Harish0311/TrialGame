@@ -14,7 +14,8 @@ namespace Entity {
                 void loop();
                 void display(sf::RenderWindow& window);
                 void move(float x, float y);
-                sf::Sprite getCharacterSprite();
+                sf::Vector2f getPosition();
+                sf::FloatRect getGlobalBounds();
                 void setJumping(bool isFalling);
                 bool getJumping();
     };
@@ -27,6 +28,7 @@ namespace Entity {
         public: 
             BaseObstacle(MainCharacter& mainCharacter);
             void loop();
+            bool isColliding();
             void move(float x, float y);
             void display(sf::RenderWindow& window);
     };

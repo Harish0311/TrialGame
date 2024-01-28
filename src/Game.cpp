@@ -12,6 +12,7 @@ void Game::run() {
     Entity::Floor floor(mc);
 
     float movementVelocity;
+    bool isColliding = false;
 
     // Game loop
     while (window.isOpen()) {
@@ -23,9 +24,6 @@ void Game::run() {
                 window.close();
             }
         }
-
-        
-        mc.loop();
 
         // Movement logic
         movementVelocity = 0.0f;
@@ -39,9 +37,21 @@ void Game::run() {
         block.move(-movementVelocity, 0.0f);
         floor.move(-movementVelocity, 0.0f);
 
-        mc.loop();
         block.loop();
         floor.loop();
+        mc.loop();
+
+        isColliding = !isColliding && block.isColliding();
+        isColliding = !isColliding && floor.isColliding();
+
+        // Gravity
+        if(isColliding) {
+            mc.setJumping(false);
+            mc.move(0.0f, 0.0f);
+        } else {
+            mc.setJumping(true);
+            mc.move(0.0f, 0.2f);
+        }
 
         mc.display(window);
         block.display(window);

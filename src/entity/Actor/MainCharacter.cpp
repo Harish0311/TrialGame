@@ -31,8 +31,12 @@ namespace Entity {
         charactersprite.move(x, y);
     }
 
-    sf::Sprite MainCharacter::getCharacterSprite() {
-        return charactersprite;
+    sf::FloatRect MainCharacter::getGlobalBounds() {
+        return charactersprite.getGlobalBounds();
+    }
+
+    sf::Vector2f MainCharacter::getPosition() {
+        return charactersprite.getPosition();
     }
 
     void MainCharacter::setJumping(bool isFalling) {
