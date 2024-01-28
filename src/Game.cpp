@@ -11,8 +11,12 @@ void Game::run() {
     Entity::Block block(mc);
     Entity::Floor floor(mc);
 
+    float movementVelocity;
+
     // Game loop
     while (window.isOpen()) {
+        window.clear();
+
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -20,8 +24,28 @@ void Game::run() {
             }
         }
 
+        
+        mc.loop();
+
+        // Movement logic
+        movementVelocity = 0.0f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            movementVelocity = -0.2f;
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            movementVelocity =  0.2f;
+        }
+
+        block.move(-movementVelocity, 0.0f);
+        floor.move(-movementVelocity, 0.0f);
+
         mc.loop();
         block.loop();
         floor.loop();
+
+        mc.display(window);
+        block.display(window);
+        floor.display(window);
+        window.display();
     }
 }

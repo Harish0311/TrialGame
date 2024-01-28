@@ -7,15 +7,16 @@ namespace Entity {
         private:
             sf::Texture texture;
             sf::Sprite charactersprite;
-            float MovementVelocity;
-            float JumpVelocity;
-            bool IsFalling;
+            bool isFalling;
 
             public:
                 MainCharacter();
                 void loop();
+                void display(sf::RenderWindow& window);
+                void move(float x, float y);
                 sf::Sprite getCharacterSprite();
-                void setJumping(bool IsFalling);
+                void setJumping(bool isFalling);
+                bool getJumping();
     };
 
     class BaseObstacle {
@@ -26,6 +27,8 @@ namespace Entity {
         public: 
             BaseObstacle(MainCharacter& mainCharacter);
             void loop();
+            void move(float x, float y);
+            void display(sf::RenderWindow& window);
     };
 
     

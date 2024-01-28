@@ -1,6 +1,7 @@
 #include "entity/Entity.h"
 
 namespace Entity {
+    sf::RectangleShape obstacle;
     std::vector<sf::RectangleShape> BaseObstacle::obstacleList;
 
     BaseObstacle::BaseObstacle(MainCharacter& mainCharacter) : mainCharacter(mainCharacter)  {
@@ -18,5 +19,13 @@ namespace Entity {
                 }
             }
         }
+    }
+
+    void BaseObstacle::display(sf::RenderWindow& window) {
+        window.draw(obstacle);
+    }
+
+    void BaseObstacle::move(float x, float y) {
+        obstacle.move(x, y);
     }
 }
