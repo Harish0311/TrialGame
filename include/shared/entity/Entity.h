@@ -5,10 +5,10 @@
 namespace Entity {
     class MainCharacter {
         private:
-            static sf::Texture texture;
-            static sf::Sprite charactersprite;
-            static float MovementVelocity;
-            static float JumpVelocity;
+            sf::Texture texture;
+            sf::Sprite charactersprite;
+            float MovementVelocity;
+            float JumpVelocity;
             bool IsFalling;
 
             public:

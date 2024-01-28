@@ -1,8 +1,9 @@
 #include "entity/Entity.h"
 
 namespace Entity {
-    BaseObstacle::BaseObstacle(MainCharacter& mainCharacter) {
-        this->mainCharacter = mainCharacter;
+    std::vector<sf::RectangleShape> BaseObstacle::obstacleList;
+
+    BaseObstacle::BaseObstacle(MainCharacter& mainCharacter) : mainCharacter(mainCharacter)  {
     }
 
     void BaseObstacle::loop() {
